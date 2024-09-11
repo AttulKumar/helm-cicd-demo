@@ -1,7 +1,7 @@
 replicaCount: 1
 workloadName: dev-application
 image:
-  repository: us-central1-docker.pkg.dev/utopian-bonito-347816/helm-cicd-repo/helm-cicd-image
+  repository: us-central1-docker.pkg.dev/dulcet-timing-429804-a6/helm-cicd-repo/helm-cicd-image
   tag: latest
   pullPolicy: IfNotPresent
 monitoring: false
