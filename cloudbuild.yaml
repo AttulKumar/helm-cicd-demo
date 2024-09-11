@@ -1,5 +1,5 @@
 substitutions:
-  _REGION: <zone>
+  _REGION: us-central1
 steps:
 - name: 'gcr.io/k8s-skaffold/skaffold'
   entrypoint: 'sh'
@@ -9,7 +9,7 @@ steps:
   - |
     # Build and push images
     skaffold build --file-output=/workspace/artifacts.json \
-                   --default-repo=${_REGION}-docker.pkg.dev/$PROJECT_ID/helm-cicd-repo \
+                   --default-repo=${us-central1}-docker.pkg.dev/$dulcet-timing-429804-a6/helm-cicd-repo \
                    --push=true
 - name: 'google/cloud-sdk:latest'
   entrypoint: 'sh'
@@ -17,8 +17,8 @@ steps:
   - -xe
   - -c
   - |
-    gcloud config set deploy/region ${_REGION}
-    sed -i s/PROJECT_ID/$PROJECT_ID/g deploy/*
+    gcloud config set deploy/region ${us-central1}
+    sed -i s/dulcet-timing-429804-a6/$dulcet-timing-429804-a6/g deploy/*
     gcloud deploy apply --file deploy/pipeline.yaml
     gcloud deploy apply --file deploy/dev.yaml
     gcloud deploy apply --file deploy/staging.yaml
@@ -27,12 +27,12 @@ steps:
                         --delivery-pipeline helm-cicd-pipeline \
                         --description "$(git log -1  --pretty='%s')" \
                         --build-artifacts /workspace/artifacts.json \
-                        --annotations "commit_ui=https://source.cloud.google.com/$PROJECT_ID/helm-cicd-demo/+/$COMMIT_SHA"
+                        --annotations "commit_ui=https://source.cloud.google.com/$dulcet-timing-429804-a6/helm-cicd-demo/+/$COMMIT_SHA"
 artifacts:
   objects:
-    location: 'gs://$PROJECT_ID-gceme-artifacts/'
+    location: 'gs://$dulcet-timing-429804-a6-gceme-artifacts/'
     paths:
     - '/workspace/artifacts.json'
 options:
-  machineType: E2_HIGHCPU_8
+  machineType: N2_STANDARD_2
 timeout: 3600s
