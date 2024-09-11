@@ -20,9 +20,9 @@ steps:
     gcloud config set deploy/region ${us-central1}
     sed -i s/dulcet-timing-429804-a6/$dulcet-timing-429804-a6/g deploy/*
     gcloud deploy apply --file deploy/pipeline.yaml
-    #   gcloud deploy apply --file deploy/dev.yaml
-    #   gcloud deploy apply --file deploy/staging.yaml
-    gcloud deploy apply --file deploy/prod.yaml
+    gcloud deploy apply --file deploy/dev.yaml
+    gcloud deploy apply --file deploy/staging.yaml
+    #     gcloud deploy apply --file deploy/prod.yaml
     gcloud deploy releases create rel-${SHORT_SHA} \
                         --delivery-pipeline helm-cicd-pipeline \
                         --description "$(git log -1  --pretty='%s')" \
