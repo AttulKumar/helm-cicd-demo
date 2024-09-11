@@ -18,7 +18,7 @@ steps:
   - -c
   - |
     gcloud config set deploy/region ${us-central1}
-    sed -i s/dulcet-timing-429804-a6/$dulcet-timing-429804-a6/g deploy/*
+    sed -i s/dulcet-timing-429804-a6/${dulcet-timing-429804-a6}/g deploy/*
     gcloud deploy apply --file deploy/pipeline.yaml
     gcloud deploy apply --file deploy/dev.yaml
     gcloud deploy apply --file deploy/staging.yaml
@@ -30,7 +30,7 @@ steps:
                         --annotations "commit_ui=https://source.cloud.google.com/$dulcet-timing-429804-a6/helm-cicd-demo/+/$COMMIT_SHA"
 artifacts:
   objects:
-    location: 'gs://$dulcet-timing-429804-a6-gceme-artifacts/'
+    location: 'gs://${dulcet-timing-429804-a6-gceme-artifacts}/'
     paths:
     - '/workspace/artifacts.json'
 options:
