@@ -18,7 +18,7 @@ steps:
   - -c
   - |
     gcloud config set deploy/region us-central1
-    sed -i s/dulcet-timing-429804-a6/${dulcet-timing-429804-a6}/g deploy/*
+    #   sed -i s/dulcet-timing-429804-a6/${dulcet-timing-429804-a6}/g deploy/*
     gcloud deploy apply --file deploy/pipeline.yaml
     gcloud deploy apply --file deploy/dev.yaml
     gcloud deploy apply --file deploy/staging.yaml
