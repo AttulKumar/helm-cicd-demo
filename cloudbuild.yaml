@@ -9,7 +9,8 @@ steps:
   - |
     # Build and push images
     skaffold build --file-output=/workspace/artifacts.json \
-                   --default-repo=${us-central1}-docker.pkg.dev/${dulcet-timing-429804-a6}/helm-cicd-repo \
+                   --default-repo=us-central1-docker.pkg.dev/dulcet-timing-429804-a6/helm-cicd-repo \
+                   #--default-repo=${us-central1}-docker.pkg.dev/${dulcet-timing-429804-a6}/helm-cicd-repo \
                    --push=true
 - name: 'google/cloud-sdk:latest'
   entrypoint: 'sh'
