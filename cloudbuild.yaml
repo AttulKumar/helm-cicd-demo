@@ -30,7 +30,8 @@ steps:
                         --annotations "commit_ui=https://source.cloud.google.com/$dulcet-timing-429804-a6/helm-cicd-demo/+/$COMMIT_SHA"
 artifacts:
   objects:
-    location: 'gs://${dulcet-timing-429804-a6-gceme-artifacts}/'
+    #  location: 'gs://${dulcet-timing-429804-a6-gceme-artifacts}/'
+    location: 'gs://helm-bucket-01/'
     paths:
     - '/workspace/artifacts.json'
 options:
